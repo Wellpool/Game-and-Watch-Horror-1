@@ -73,8 +73,8 @@ public class PlayerControler : MonoBehaviour
             row = 2;
         if (column < 0)
             column = 0;
-        if (column > 5)
-            column = 5;
+        if (column > 4)
+            column = 4;
     }
 
     private void GridCount()
