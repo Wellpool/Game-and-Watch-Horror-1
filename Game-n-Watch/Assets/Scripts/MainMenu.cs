@@ -6,17 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject MainGame;
-    
-    public void Start()
+    public GameObject gameUI;
+    public GameObject mainMenu;
+
+    public LevelManager lm;
+
+    private void Start()
     {
-        MainGame.SetActive(false);
+        gameUI.SetActive(false);
+        
+        lm = GameObject.FindGameObjectWithTag("BM").GetComponent<LevelManager>();
     }
+
 
     public void PlayGame()
     {
         //SceneManager.LoadScene(1); // Load the first level
-        MainGame.SetActive(true);
+        gameUI.SetActive(true);
+        mainMenu.SetActive(false);
+        lm.levelWait = true;
+
     }
 
     public void QuitGame()

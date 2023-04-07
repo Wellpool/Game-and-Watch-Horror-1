@@ -7,6 +7,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public int addScore = 10;
+    private float _spawnTime = 7f;
 
     public GameObject pickUp;
 
@@ -23,11 +24,16 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
+        _spawnTime -= Time.deltaTime;
+        
         if (Vector2.Distance(transform.position, player.position) == 0)
         {
             scoreM.score += addScore;
             Destroy(pickUp);
         }
+        
+        if(_spawnTime <= 0)
+            Destroy(gameObject);
     }
 
     /*private void OnTriggerEnter(Collider other)

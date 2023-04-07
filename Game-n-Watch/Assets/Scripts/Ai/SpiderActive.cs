@@ -12,6 +12,7 @@ public class SpiderActive : MonoBehaviour
     public bool isActive;
 
     public GameObject spider;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class SpiderActive : MonoBehaviour
         {
             spider.SetActive(true);
             activeTimer -= Time.deltaTime;
-            notActiveTimer = activeTime;
+            notActiveTimer = notActiveTime;
         }
         else
         {
@@ -43,7 +44,15 @@ public class SpiderActive : MonoBehaviour
         if (notActiveTimer <= 0)
         {
             isActive = true;
-            notActiveTimer = activeTime;
+            notActiveTimer = notActiveTime;
         }
+
+        if (activeTimer <= 0)
+        {
+            isActive = false;
+            activeTimer = activeTime;
+        }
+        
+        
     }
 }

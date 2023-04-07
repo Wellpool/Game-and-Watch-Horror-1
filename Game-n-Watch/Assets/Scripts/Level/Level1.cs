@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class Level1 : MonoBehaviour
 {
-    public GameObject level1;
+    public float levelTimer;
+    public float levelTime = 40f;
 
-    public LevelManager LM;
+    public GameObject level;
+
+    //public GameObject ghostSpawn1;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("BM").GetComponent<LevelManager>();
+        levelTimer = levelTime;
+        //ghostSpawn1.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (LM.levelTime <= 0)
+        levelTimer -= Time.deltaTime;
+        
+        /*if(levelTimer <= 35)
+            ghostSpawn1.SetActive(true);*/
+        
+        if (levelTimer <= 0f)
         {
-            level1.SetActive(false);
+            level.SetActive(false);
         }
     }
 }
+    
